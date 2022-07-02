@@ -1,2 +1,2 @@
 # concertfestivalthing
-The main repo for now
+DanceBox! Players to dance to the correct areas to win points!
