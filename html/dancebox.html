@@ -13,17 +13,27 @@
 <body>
     <div id="game-container">
 
-            <img id="boydancer" src="../img/bdance-unscreen.gif">
+        <canvas class="=dance-canvas" id="dance-canvas" width="880" height="560">
             <img id="girldancer" src="../img/gdance-unscreen.gif">
-
-            
+            <img id="boydancer" src="../img/bdance-unscreen.gif">
+        </canvas>
 
         
     </div>
     <button><a href="../html/start_dancebox.html">Go back</a></button>
     <div id="rainbow-container"></div>
 
+    <div class="frame">
+        <canvas class="game-canvas" id="main-canvas" width="880" height="560">
+            
+        </canvas>
+      </div>
+  
+      <button class="music-button off" id="js-music-button">Press for Music!</button>
+  
+
 </body>
 <script src="../js/dancebox.js"></script>
+<script src="../js/crewdance.js"></script>
 
 </html>
