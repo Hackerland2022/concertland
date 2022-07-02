@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #262626, #474747);
+  font-family: 'Permanent Marker', cursive;
+  /* DISPLAY OPTIONS FOR THE BUTTON */
+    /* IN YOUR PROYECT DELETE THIS STYLES */
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+  /* END DISPLAY OPTIONS FOR THE BUTTON */
+}
+
+/*
+ BUTTON STYLES
+*/
+
+#startButton {
+  position: relative;
+  margin: 4px auto 0;
+  font-size: 18px;
+  padding: 0;
+  font-family: 'Permanent Marker', cursive;
+  border: none;
+  padding: 10px 40px;
+  width: 100%;
+  background:#000;
+  color: #fff;
+  font-size: 16px;
+  max-width: 250px;
+  min-width: 100px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: .2s;
+} #startButton:hover {
+  letter-spacing: 3px;
+} #startButton:active {
+  transform: scale(1.2);
+}
+
+#startButton:before, #startButton:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px; 
+  background: linear-gradient(45deg, #CC00FF, #6E0DD0, #9900FF, #FF6600, #00FF00, #ffff00, #ff0000, #FFFF00, #FFFF33, #ffff00, #FF00FF, #FF00CC, #FF0000, #00FF66, #33FF00, #00FFFF, #099FFF, #0062FF, #ff0000, #F2EA02, #E6FB04, #0033FF, #FF0099, #00FF33, #0000ff, #00ff00, #fb0094, #0000ff, #00ff00, #fb0094, #FD1C03, #FF3300, #CC00FF, #9D00FF, #CC00FF, #6E0DD0, #9900FF);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: linear-shadow 25s linear infinite;
+}
+
+#startButton:before {
+  filter: blur(20px);
+}
+
+@keyframes linear-shadow {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+/* ======================================== */
+/* PROCRASTINATION */
+/* ======================================== */
+
+/* html { height: 100%; } */
+/* body { min-height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; } */
+#everybodydance { 
+  border-radius: 50%; 
+  width: 200px;
+  height: 200px;
+  border: none;
+  color: white;
+  font-family: Avenir, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  background: red;
+  text-shadow: 0 3px 1px rgba(122,17,8,.8);
+  box-shadow: 0 8px 0 rgb(183,9,0), 
+    0 15px 20px rgba(0,0,0,.35);
+  text-transform: uppercase;
+  transition: .4s all ease-in;
+  outline: none; 
+  cursor: pointer;
+  text-align: center;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#everybodydance span { position: relative; }
+/* fix for IE 11 (and IE8+, although the earlier versions are harder to address) stupidly moving the inner button text on click */
+.pressed { 
+  padding-top: 3px;
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgb(183,0,0),
+    0 8px 6px rgba(0,0,0,.45);
+}
+
+
+
+
