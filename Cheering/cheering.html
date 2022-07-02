@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Cheering</title>
 </head>
 <body>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="./cheering.js"></script>
+    <audio id="idolSinging" src="" autoplay="false" preload="auto"></audio>
+    <audio id="scream" src="../Assets/Sounds/womanscream.mp3" autoplay="false" preload="auto"></audio>
+    <audio id="audienceCheer" src="../Assets/Sounds/audienceapplause.mp3" autoplay="false" preload="auto"></audio>
+    <div class="box top" id="instructionModal">
+        <p>Hit the falling notes! Press the "A" and "D" keys to cheer with the crowd.</p>
+        <button class="box" id="startBtn">Start</button>
+    </div>
+    <div id="gameContainer">
+        <div id="game">
+            <!--<div id="stage">
+                <img id="idolImage" src="" alt="idol">
+            </div> -->
+            <div id="audience">
+                <div class="crowdoutline top"></div>
+                <div class="crowd"></div>
+                <div class="crowd" style="margin-left: 20vw;"></div>
+            </div>        
+            <div id="endGame">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>

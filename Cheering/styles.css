@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial Narrow Bold', sans-serif;
+    background: linear-gradient(#e769d6, #db2fc4,#e0e0e0);
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#gameContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url("../Assets/Images/stage.png");
+    background-size: 80vw 80vh;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+#audience {
+    bottom: 0;
+    max-height: 30vh;
+    width: 100vw;
+}
+
+.crowdoutline {
+    bottom: -10vh;
+    height: 50vh;
+    position: absolute;
+    object-fit: contain;
+    width: 100vw;
+    background-image: url("../Assets/Images/crowdoutline.png");
+}
+
+.top {
+    z-index: 4;
+}
+
+.crowd {
+    position: absolute;
+    width: 100vw;
+    height: 40vh;
+    bottom: -10vh;
+    background-image: url("../Assets/Images/crowdoutline.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: -10vw;
+}
+
+#endGame {
+    display: none;
+}
+
+.box { 
+    background-color: rgba(0,0,0, 0.6);
+    max-width: 60vw;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 2vw;
+}
+
+#instructionModal {
+    position: absolute;
+    top: 20vh;
+}
+
+#startBtn {
+    width: 10vw;
+    cursor: pointer;
+    border: 2px transparent solid;
+}
+
+#startBtn:hover {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+	animation: outline 5s infinite;
+}
+
+@keyframes outline {
+	0% {
+		background-position: 0% 50%;
+        border: 2px white solid;
+        color: black;
+	}
+	50% {
+		background-position: 100% 50%;
+        border: 2px white dotted;
+        color: white;
+	}
+	100% {
+		background-position: 0% 50%;
+        border: 2px white solid;
+        color: black;
+	}
+}
