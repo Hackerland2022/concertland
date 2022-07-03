@@ -1,60 +1,3 @@
-var isHolding = {
-    a: false,
-    d: false,
-};
-
-var hits = { perfect: 0, good: 0, bad: 0, miss: 0 };
-
-var a = {
-    color: 'rgba(28, 121, 228, 1)',
-    next: 0,
-    notes: [
-        { duration: 3, delay: 4.2 },
-        { duration: 3, delay: 12.2 },
-        { duration: 3, delay: 20.4 },
-        { duration: 3, delay: 28.1 },
-        { duration: 3, delay: 35.5 },
-        { duration: 3, delay: 39.5 },
-        { duration: 3, delay: 43.5 },
-        { duration: 3, delay: 47.4 },
-        { duration: 3, delay: 49.5 },
-        { duration: 3, delay: 52 },
-    ],
-};
-
-var d = {
-    color: 'rgba(28, 121, 228, 1)',
-    next: 0,
-    notes: [
-        { duration: 3, delay: 2.2 },
-        { duration: 3, delay: 6.2 },
-        { duration: 3, delay: 10.2 },
-        { duration: 3, delay: 18.5 },
-        { duration: 3, delay: 22.4 },
-        { duration: 3, delay: 26.2 },
-        { duration: 3, delay: 29.9 },
-        { duration: 3, delay: 33.6 },
-        { duration: 3, delay: 37.3 },
-        { duration: 3, delay: 39.5 },
-        { duration: 3, delay: 41.3 },
-        { duration: 3, delay: 47.4 },
-    ],
-};
-
-var song = {
-  duration: 112,
-  sheet: [a, d],
-};
-
-var multiplier = {
-  perfect: 1,
-  good: 0.8,
-  bad: 0.5,
-  miss: 0,
-  combo40: 1.05,
-  combo80: 1.10
-};
-
 window.onload = function () {
     const audienceCheer = document.getElementById("audienceCheer");
     const scream = document.getElementById("scream");
@@ -62,8 +5,63 @@ window.onload = function () {
     const trackContainer = document.querySelector('.track-container');
     const keypress = document.querySelectorAll('.keypress');
     const game = document.getElementById("game");
+    const stats = document.getElementById("stats");
     const comboText = document.querySelector('.hit__combo');
     const scoreCount = document.getElementById("score_count");
+    const endGame = document.getElementById("endGame");
+
+    var isHolding = {
+      a: false,
+      d: false,
+  };
+  
+  var hits = { good: 0, bad: 0, miss: 0 };
+  
+  var a = {
+      color: 'rgba(28, 121, 228, 1)',
+      next: 0,
+      notes: [
+          { duration: 6, delay: 4.2 },
+          { duration: 6, delay: 12.2 },
+          { duration: 6, delay: 20.4 },
+          { duration: 6, delay: 28.1 },
+          { duration: 6, delay: 35.5 },
+          { duration: 6, delay: 39.5 },
+          { duration: 6, delay: 43.5 },
+          { duration: 6, delay: 47.4 },
+          { duration: 6, delay: 49.5 },
+      ],
+  };
+  
+  var d = {
+      color: 'rgba(28, 121, 228, 1)',
+      next: 0,
+      notes: [
+          { duration: 6, delay: 2.2 },
+          { duration: 6, delay: 6.2 },
+          { duration: 6, delay: 10.2 },
+          { duration: 6, delay: 18.5 },
+          { duration: 6, delay: 22.4 },
+          { duration: 6, delay: 26.2 },
+          { duration: 6, delay: 29.9 },
+          { duration: 6, delay: 33.6 },
+          { duration: 6, delay: 37.3 },
+          { duration: 6, delay: 39.5 },
+          { duration: 6, delay: 41.3 },
+          { duration: 6, delay: 47.4 },
+      ],
+  };
+  
+  var song = {
+    duration: 56,
+    sheet: [a, d],
+  };
+  
+  var multiplier = {
+    good: 1,
+    bad: 0.5,
+    miss: 0,
+  };
 
     var isPlaying = false;
     var combo = 0;
@@ -109,7 +107,7 @@ window.onload = function () {
         if (Object.keys(isHolding).indexOf(event.key) !== -1 && !isHolding[event.key]) {
             isHolding[event.key] = true;
             keypress[keyIndex].style.border = "2px white solid";
-            //scream.play();
+            scream.play();
 
             if (isPlaying && tracks[keyIndex].firstChild) {
                 judge(keyIndex);
@@ -143,6 +141,8 @@ window.onload = function () {
         isPlaying = true;
         startTime = Date.now();
         game.style.display = "flex";
+        stats.style.display = "block";
+        endGame.style.display = "none";
         startTimer(song.duration);
         document.getElementById('song').play();
         initialiseNotes();
@@ -154,21 +154,18 @@ window.onload = function () {
     var judge = function (index) {
         var timeInSecond = (Date.now() - startTime) / 1000;
         var nextNoteIndex = song.sheet[index].next;
+        console.log(nextNoteIndex)
         var nextNote = song.sheet[index].notes[nextNoteIndex];
+        console.log(nextNote)
         var perfectTime = nextNote.duration + nextNote.delay;
         var accuracy = Math.abs(timeInSecond - perfectTime);
         var hitJudgement;
 
-        /**
-         * As long as the note has travelled less than 3/4 of the height of
-         * the track, any key press on this track will be ignored.
-         */
         if (accuracy > (nextNote.duration - 1) / 4) {
             return;
         }
 
         hitJudgement = getHitJudgement(accuracy);
-        //displayAccuracy(hitJudgement);
         updateHits(hitJudgement);
         updateCombo(hitJudgement);
         updateMaxCombo();
@@ -182,24 +179,18 @@ window.onload = function () {
     };
 
     var calculateScore = function (judgement) {
-      if (combo >= 80) {
-        score += 1000 * multiplier[judgement] * multiplier.combo80;
-      } else if (combo >= 40) {
-        score += 1000 * multiplier[judgement] * multiplier.combo40;
-      } else {
-        score += 1000 * multiplier[judgement];
-      }
-
-      scoreCount.innerHTML = score;
+      score += 1000 * multiplier[judgement];
+      scoreCount.innerHTML = `Score: ${score}`;
     };
 
     var updateCombo = function (judgement) {
-      if (judgement === 'bad' || judgement === 'miss') {
+      if (judgement === 'miss') {
         combo = 0;
-        comboText.innerHTML = '';
       } else {
-        comboText.innerHTML = ++combo;
+        ++combo;
       }
+      
+      comboText.innerHTML = `Combo: ${combo}`;
     };
 
     var updateMaxCombo = function () {
@@ -207,9 +198,7 @@ window.onload = function () {
     };
 
     var getHitJudgement = function (accuracy) {
-      if (accuracy < 0.1) {
-        return 'perfect';
-      } else if (accuracy < 0.2) {
+      if (accuracy < 0.2) {
         return 'good';
       } else if (accuracy < 0.3) {
         return 'bad';
@@ -251,8 +240,10 @@ window.onload = function () {
       }, 1000);
     };
 
-    var updateAnimation = function () {
-      animation = 'moveDownFade';
-      initialiseNotes();
-    };
+    function showResult() {
+      document.getElementById("endGame").style.display = "flex";
+      document.getElementById("finalScore").innerHTML = `Score: ${score}`;
+      game.style.display = "none";
+      stats.style.display = "none";
+    }
 };

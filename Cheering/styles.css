@@ -1,6 +1,6 @@
 body {
     font-family: "Arial Narrow Bold", sans-serif;
-    background: linear-gradient(#e769d6, #db2fc4, #e0e0e0);
+    background: linear-gradient(#c8dcff, #bdcae6, #aaa69e 95%, #e0e0e0);
     height: 100vh;
     width: 100vw;
     padding: 0;
@@ -27,10 +27,11 @@ body {
     position: absolute;
     top: 0;
     display: flex;
-    height: 50vh;
+    height: 100vh;
     flex-direction: column;
     width: 30vw;
     display: none;
+    z-index: 20;
 }
 
 #audience {
@@ -76,12 +77,13 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
-    padding: 2vw;
+    padding: 2vh 2vw;
 }
 
 #instructionModal {
     position: absolute;
     top: 30vh;
+    text-align: center;
 }
 
 #startBtn {
@@ -115,8 +117,7 @@ body {
 }
 
 .track-container {
-    z-index: 2;
-    height: 90vh;
+    height: 100%;
     border: 2px white solid;
     display: flex;
     flex-direction: row;
@@ -150,4 +151,46 @@ body {
 .key-container {
     display: flex;
     justify-content: center;
+}
+
+.note {
+    position: absolute;
+    width: 50%;
+    height: 1.5rem;
+    top: -1.5rem;
+}
+
+@keyframes moveDown {
+    0% {
+        top: -1.5rem;
+    }
+    98% {
+        top: 98%;
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+#stats {
+    border: 2px dotted black;
+    padding: 2vh 2vw;
+    width: 20vw;
+    position: absolute;
+    left: 0;
+    color: black;
+    display: none;
+}
+
+#endGame {
+    z-index: 11;
+    display: none;
+    flex-direction: column;
+}
+
+#endGame button {
+    margin-top: 1vh;
+    cursor: pointer;
 }

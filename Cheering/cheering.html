@@ -20,24 +20,13 @@
 
     <div id="gameContainer">
         <div id="stats">
-            <div class="hit">
-                <div class="hit__combo">Combo: </div>
-                <div class="hit__accuracy"></div>
-            </div>
+            <div class="hit__combo">Combo: 0</div>
             <br/>
-            <div class="result__accuracy score">
-                <p class="accuracy__heading">Score: </p>
-                <p id="score_count"></p>
-            </div>
+            <p id="score_count">Score: 0</p>
             <br/>
             <div class="summary__timer"></div>
         </div> 
-
         <div id="game">
-
-            <!--<div id="stage">
-                <img id="idolImage" src="" alt="idol">
-            </div> -->
             <div class="track-container"></div>
             <div class="key-container">
                 <div class="key key--blue">
@@ -49,10 +38,14 @@
                   <span>D</span>
                 </div>
             </div>
-            <div id="endGame"></div>
-        </d iv>
+        </div>
+        <div id="endGame">
+            <h1 id="finalScore">Score: </h1>
+            <button class="box" id="back" onclick="location.href = '../'">Back</button>
+        </div>
     </div>
     <div id="audience">
+        <img id="idolImage" src="" alt="idol">
         <div class="crowdoutline top"></div>
         <div class="crowd"></div>
         <div class="crowd" style="margin-left: 20vw;"></div>
