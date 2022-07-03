@@ -7,32 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dancebox.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
     <title>DanceBox</title>
 </head>
 
 <body>
-    <div id="game-container">
-
-        <canvas class="=dance-canvas" id="dance-canvas" width="880" height="560">
-            <img id="girldancer" src="../img/gdance-unscreen.gif">
-            <img id="boydancer" src="../img/bdance-unscreen.gif">
-        </canvas>
-
+    <div id="game-container" >
+        <canvas class="game-canvas" id="main-canvas" width="880" height="560"></canvas>
+            <div class="colorBlock" onmouseover="changeFloorColor()"></div>
+            <img id="girldancer" src="../img/gdance-cropped.gif">
+            <img id="boydancer" src="../img/bdance-cropped.gif">
+    </div>
+    
+<div class="frame">
         
     </div>
     <button><a href="../html/start_dancebox.html">Go back</a></button>
     <div id="rainbow-container"></div>
 
-    <div class="frame">
-        <canvas class="game-canvas" id="main-canvas" width="880" height="560">
-            
-        </canvas>
-      </div>
-  
-      <button class="music-button off" id="js-music-button">Press for Music!</button>
-  
+    
+
+    <button class="music-button off" id="js-music-button">Press for Music!</button>
+
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="../js/dancebox.js"></script>
 <script src="../js/crewdance.js"></script>
 
