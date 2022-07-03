@@ -9,7 +9,7 @@ const squareBlue = document.querySelector('.square-blue');
 
 const squares = document.querySelectorAll('.square');
 
-let currentTime = 20;
+let currentTime = 15;
 let timerId = null;
 
 let result = 0;
@@ -32,7 +32,7 @@ function countDown() {
     clearInterval(countDownTimerId);
     clearInterval(timerId);
     alert('Your score is ' + result);
-    //next();
+    next();
   }
 }
 
@@ -77,7 +77,6 @@ squares.forEach(square => {
   })
 })
 
-/*
 function next() {
-  window.location.href = "../transitionPages/antiTrawling.html";
-}*/
+  window.location.href = "../ticketingInfo/ticketInfo.html";
+}

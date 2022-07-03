@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap"
+  rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="ticketInfo.css">
+  <title>hackerland</title>
+</head>
+
+<body>
+  <div 
+    class="info" 
+    id="info"
+    style="font-size: 45px; align-items: center;">
+    To enter the music festival, you first have to get through ticketing. 
+    Come help with the classification of tickets.
+  </div>
+
+  <audio 
+    src="sounds/music.mp3" 
+    id="music" 
+    preload="auto" 
+    autoplay="true" 
+    loop="true">
+  </audio>
+
+  <button 
+    id="next-button"
+    type="button" 
+    class="btn btn-primary" 
+    onclick="next()" 
+    style="left: 1150px; top: 550px; position: absolute; background-color: rgb(226, 199, 159); font-size: 50px; height: 170px; width: 200px">
+    START GAME
+  </button>
+
+  <script src="ticketInfo.js"></script>
+
+</body>
+</html>
