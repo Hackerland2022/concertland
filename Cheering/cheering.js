@@ -154,9 +154,7 @@ window.onload = function () {
     var judge = function (index) {
         var timeInSecond = (Date.now() - startTime) / 1000;
         var nextNoteIndex = song.sheet[index].next;
-        console.log(nextNoteIndex)
         var nextNote = song.sheet[index].notes[nextNoteIndex];
-        console.log(nextNote)
         var perfectTime = nextNote.duration + nextNote.delay;
         var accuracy = Math.abs(timeInSecond - perfectTime);
         var hitJudgement;
