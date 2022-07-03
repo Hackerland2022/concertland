@@ -14,6 +14,6 @@
 * cheering game, similar to tap tap revenge https://codepen.io/edalgrin/pen/LYROvvm
 
 # Credits
-* stage, crowd from [pixabay](https://www.pixabay.com")
+* stage, crowd, island, banner from [pixabay](https://www.pixabay.com")
 * Dancing green character from [pngegg](https://www.pngegg.com/en/png-moxks)
 * Dancing blue character from [pngegg](https://www.pngegg.com/en/png-ofmxm)
