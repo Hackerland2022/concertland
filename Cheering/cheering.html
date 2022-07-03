@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cheering</title>
+</head>
+<body>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="./cheering.js"></script>
+    <audio id="song" src="../Assets/Sounds/rock-performance.mp3" preload="auto"></audio>
+    <audio id="scream" src="../Assets/Sounds/womanscream.mp3" preload="auto"></audio>
+    <audio id="audienceCheer" src="../Assets/Sounds/audienceapplause.mp3" preload="auto"></audio>
+    <div class="box top" id="instructionModal">
+        <p>Hit the falling notes! Press the "A" and "D" keys to cheer with the crowd.</p>
+        <button class="box" id="startBtn">Start</button>
+    </div>
+
+    <div id="gameContainer">
+        <div id="stats">
+            <div class="hit__combo">Combo: 0</div>
+            <br/>
+            <p id="score_count">Score: 0</p>
+            <br/>
+            <div class="summary__timer"></div>
+        </div> 
+        <div id="game">
+            <div class="track-container"></div>
+            <div class="key-container">
+                <div class="key key--blue">
+                  <div class="keypress keypress--blue"></div>
+                  <span>A</span>
+                </div>
+                <div class="key key--red">
+                  <div class="keypress keypress--red"></div>
+                  <span>D</span>
+                </div>
+            </div>
+        </div>
+        <div id="endGame">
+            <h1 id="finalScore">Score: </h1>
+            <button class="box" id="back" onclick="location.href = '../'">Back</button>
+        </div>
+    </div>
+    <div id="audience">
+        <img id="idolImage" src="" alt="idol">
+        <div class="crowdoutline top"></div>
+        <div class="crowd"></div>
+        <div class="crowd" style="margin-left: 20vw;"></div>
+    </div>   
+</body>
+</html>
