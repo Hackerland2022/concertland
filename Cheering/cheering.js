@@ -13,55 +13,55 @@ window.onload = function () {
     var isHolding = {
       a: false,
       d: false,
-  };
-  
-  var hits = { good: 0, bad: 0, miss: 0 };
-  
-  var a = {
-      color: 'rgba(28, 121, 228, 1)',
-      next: 0,
-      notes: [
-          { duration: 6, delay: 4.2 },
-          { duration: 6, delay: 12.2 },
-          { duration: 6, delay: 20.4 },
-          { duration: 6, delay: 28.1 },
-          { duration: 6, delay: 35.5 },
-          { duration: 6, delay: 39.5 },
-          { duration: 6, delay: 43.5 },
-          { duration: 6, delay: 47.4 },
-          { duration: 6, delay: 49.5 },
-      ],
-  };
-  
-  var d = {
-      color: 'rgba(28, 121, 228, 1)',
-      next: 0,
-      notes: [
-          { duration: 6, delay: 2.2 },
-          { duration: 6, delay: 6.2 },
-          { duration: 6, delay: 10.2 },
-          { duration: 6, delay: 18.5 },
-          { duration: 6, delay: 22.4 },
-          { duration: 6, delay: 26.2 },
-          { duration: 6, delay: 29.9 },
-          { duration: 6, delay: 33.6 },
-          { duration: 6, delay: 37.3 },
-          { duration: 6, delay: 39.5 },
-          { duration: 6, delay: 41.3 },
-          { duration: 6, delay: 47.4 },
-      ],
-  };
-  
-  var song = {
-    duration: 56,
-    sheet: [a, d],
-  };
-  
-  var multiplier = {
-    good: 1,
-    bad: 0.5,
-    miss: 0,
-  };
+    };
+    
+    var hits = { good: 0, bad: 0, miss: 0 };
+    
+    var a = {
+        color: 'rgba(28, 121, 228, 1)',
+        next: 0,
+        notes: [
+            { duration: 6, delay: 4.2 },
+            { duration: 6, delay: 12.2 },
+            { duration: 6, delay: 20.4 },
+            { duration: 6, delay: 28.1 },
+            { duration: 6, delay: 35.5 },
+            { duration: 6, delay: 39.5 },
+            { duration: 6, delay: 43.5 },
+            { duration: 6, delay: 47.4 },
+            { duration: 6, delay: 49.5 },
+        ],
+    };
+    
+    var d = {
+        color: 'rgba(28, 121, 228, 1)',
+        next: 0,
+        notes: [
+            { duration: 6, delay: 2.2 },
+            { duration: 6, delay: 6.2 },
+            { duration: 6, delay: 10.2 },
+            { duration: 6, delay: 18.5 },
+            { duration: 6, delay: 22.4 },
+            { duration: 6, delay: 26.2 },
+            { duration: 6, delay: 29.9 },
+            { duration: 6, delay: 33.6 },
+            { duration: 6, delay: 37.3 },
+            { duration: 6, delay: 39.5 },
+            { duration: 6, delay: 41.3 },
+            { duration: 6, delay: 47.4 },
+        ],
+    };
+    
+    var song = {
+      duration: 56,
+      sheet: [a, d],
+    };
+    
+    var multiplier = {
+      good: 1,
+      bad: 0.5,
+      miss: 0,
+    };
 
     var isPlaying = false;
     var combo = 0;
@@ -148,6 +148,9 @@ window.onload = function () {
         initialiseNotes();
         document.querySelectorAll('.note').forEach(function (note) {
           note.style.animationPlayState = 'running';
+          note.addEventListener(true, function() {
+            if(note.style.top >= "70vh") audienceCheer.play();
+          })
         });
     }
 
