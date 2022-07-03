@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap"
+  rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="sorting.css">
+  <title>hackerland</title>
+</head>
+<body>
+  <div class="information" id="information">
+    Click on the colour that correspond to the ticket category!
+  </div>
+
+  <h2 class="score" id="score">
+    Your score:
+  </h2>
+  <h2 class="score-value" id="score-value">
+    0
+  </h2>
+
+  <h2 class="time-left" id="time-left">
+    Time Left:
+  </h2>
+  <h2 class="time-left-value" id="time-left-value">
+    15
+  </h2>
+
+  <h2 class="category-info" id="category-info">
+    Category Information
+  </h2>
+  <h2 class="category-info" id="category-info">
+    1 = Red
+  </h2>
+  <h2 class="category-info" id="category-info">
+    2 = Yellow
+  </h2>
+  <h2 class="category-info" id="category-info">
+    3 = Green
+  </h2>
+  <h2 class="category-info" id="category-info">
+    4 = Blue
+  </h2>
+
+  <h2 class="customer-category" id="customer-category">
+    Category:
+  </h2>
+  <h2 class="customer-category-value" id="customer-category-value">
+    0
+  </h2>
+
+  <div class="grid">
+    <div class="square" id="1" style="background-color: red;"></div>
+    <div class="square" id="2" style="background-color: yellow;"></div>
+    <div class="square" id="3" style="background-color: green;"></div>
+    <div class="square" id="4" style="background-color: blue;"></div>
+
+    <audio 
+      src="sounds/music.mp3" 
+      id="music" 
+      preload="auto" 
+      autoplay="true" 
+      loop="true">
+    </audio>
+  </div>
+
+  <script src="sorting.js"></script>
+
+</body>
+</html>

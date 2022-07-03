@@ -1,0 +1,98 @@
+body {
+    font-family: 'Original Surfer', cursive;
+    font-size: 20px;
+}
+
+#information {
+    color: white;
+    font-size: 30 px;
+    background-color: black;
+    padding: 10px;
+    width: 840px;
+}
+
+.score {
+    background-color: skyblue;
+    width: 150px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.score-value {
+    background-color: skyblue;
+    width: 150px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.time-left {
+    background-color: skyblue;
+    width: 150px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.time-left-value {
+    background-color: skyblue;
+    width: 150px;
+    margin-top: 0px;
+    padding: 5px;
+}
+
+.customer-category {
+    background-color: skyblue;
+    width: 150px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.customer-category-value {
+    background-color: skyblue;
+    width: 150px;
+    margin-top: 0px;
+    padding: 5px;
+}
+
+.category-info {
+    background-color: skyblue;
+    width: 300px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.grid {
+    display: flex;
+    max-width: 400px;
+    height: 400px;
+    flex-wrap: wrap;
+    border: solid black 1px; 
+    /*cursor: url(images/crabClaw.png), default;*/
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+}
+
+body {
+    background-image: url('images/background.jpg');
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    
+    font-family: 'Original Surfer', cursive;
+    text-align: center;
+}
