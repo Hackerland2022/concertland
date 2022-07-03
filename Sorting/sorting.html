@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <!-- Google Font-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,126 +12,68 @@
   href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap"
   rel="stylesheet"
   />
+
   <link rel="stylesheet" href="sorting.css">
   <title>hackerland</title>
 </head>
+<body>
+  <div class="information" id="information">
+    Click on the colour that correspond to the ticket category!
+  </div>
 
-  <body  >
-      <div
-        style="
-          color: white;
-          font-size: 30px;
-          background-color: black;
-          padding: 10px;
-          width: 840px;
-        "
-      >
-        Click on the wristband colour that correspond to the ticket category!
-      </div>
+  <h2 class="score" id="score">
+    Your score:
+  </h2>
+  <h2 class="score-value" id="score-value">
+    0
+  </h2>
 
-      <h2
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-bottom: 0px;
-          padding: 5px;
-        "
-      >
-        Your score:
-      </h2>
-      <h2
-        id="score"
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          padding: 5px;
-        "
-      >
-        0
-      </h2>
+  <h2 class="time-left" id="time-left">
+    Time Left:
+  </h2>
+  <h2 class="time-left-value" id="time-left-value">
+    20
+  </h2>
 
-      <h2
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          padding: 5px;
-        "
-      >
-        Time left:
-      </h2>
-      <h2
-        id="time-left"
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-top: 0px;
-          padding: 5px;
-        "
-      >
-        30
-      </h2>
+  <h2 class="category-info" id="category-info">
+    Category Information
+  </h2>
+  <h2 class="category-info" id="category-info">
+    1 = Red
+  </h2>
+  <h2 class="category-info" id="category-info">
+    2 = Yellow
+  </h2>
+  <h2 class="category-info" id="category-info">
+    3 = Green
+  </h2>
+  <h2 class="category-info" id="category-info">
+    4 = Blue
+  </h2>
 
-      <h2
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          padding: 5px;
-        "
-      >
-        Wristband:
-      </h2>
-      <h2
-        id="colour"
-        style="
-          background-color: skyblue;
-          width: 150px;
-          margin-top: 0px;
-          padding: 5px;
-        "
-      >
-        0
-      </h2>
+  <h2 class="customer-category" id="customer-category">
+    Category:
+  </h2>
+  <h2 class="customer-category-value" id="customer-category-value">
+    0
+  </h2>
 
-      <!-- <img src="images/wrong.jpg" alt="" id="wrong"> -->
+  <div class="grid">
+    <div class="square" id="1" style="background-color: red;"></div>
+    <div class="square" id="2" style="background-color: yellow;"></div>
+    <div class="square" id="3" style="background-color: green;"></div>
+    <div class="square" id="4" style="background-color: blue;"></div>
 
-    <div class="grid">
-      <div class="square" id="square-red"></div>
-      <div class="square" id="square-yellow"></div>
-      <div class="square" id="square-green"></div>
-      <div class="square" id="square-blue"></div>
+    <audio 
+      src="sounds/music.mp3" 
+      id="music" 
+      preload="auto" 
+      autoplay="true" 
+      loop="true">
+    </audio>
+  </div>
 
-      <audio
-        src="sounds/music.mp3"
-        id="music"
-        preload="auto"
-        autoplay="true"
-        loop="true"
-      ></audio>
+  <script src="sorting.js"></script>
 
-      <!-- <button
-        type="button"
-        class="btn btn-primary"
-        onclick="next()"
-        style="
-          left: 1700px;
-          top: 550px;
-          position: absolute;
-          background-color: rgb(226, 199, 159);
-          font-size: 30px;
-          height: 100px;
-          width: 200px;
-        "
-      >
-        CONTINUE
-      </button> -->
-    </div>
-
-    <script src="sorting.js"></script>
-  </body>
+</body>
 </html>

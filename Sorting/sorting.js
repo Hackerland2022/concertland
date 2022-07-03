@@ -1,28 +1,40 @@
-const squareRed = document.querySelector('#square-red');
-const squareYellow = document.querySelector('#square-yellow');
-const squareGreen = document.querySelector('#square-green');
-const squareBlue = document.querySelector('#square-blue');
+const timeLeft = document.querySelector('#time-left-value');
+const score = document.querySelector('#score-value');
+const wristbandColour = document.querySelector('#customer-category-value');
 
-//var wrong = document.getElementById("wrong");
-//var wristbandColour = document.getElementById("colour");
+const squareRed = document.querySelector('.square-red');
+const squareYellow = document.querySelector('.square-yellow');
+const squareGreen = document.querySelector('.square-green');
+const squareBlue = document.querySelector('.square-blue');
 
-// sync
-let red = 0;
-let yellow = 1;
-let green = 2;
-let blue = 3;
+const squares = document.querySelectorAll('.square');
 
-// selecting for an element with id time-left
-const timeLeft = document.querySelector('#time-left');
-const score = document.querySelector('#score');
-const wristbandColour = document.querySelector('#colour');
-
-let result = 0;
-let hitPosition;
-let currentTime = 30;
+let currentTime = 20;
 let timerId = null;
 
+let result = 0;
+
+let hitPosition;
+
 let countDownTimerId = setInterval(countDown, 1000)
+
+function update() {
+  score.textContent = result;
+  timeLeft.textContent = currentTime;
+  wristbandColour.textContent = currentTime;
+}
+
+function countDown() {
+  currentTime--;
+  timeLeft.textContent = currentTime;
+
+  if (currentTime == 0) {
+    clearInterval(countDownTimerId);
+    clearInterval(timerId);
+    alert('Your score is ' + result);
+    //next();
+  }
+}
 
 //create audio element for playing music and sfx
 function playSound(src) {
@@ -42,80 +54,30 @@ function playSound(src) {
   };
 }
 
-squareRed.forEach(square => {
-  square.addEventListener('click', () => {
-    if (square.id == hitPosition) {
-      result++;
-      score.textContent = result;
-      smashedLoggers = new playSound("sounds/correct.mp3");
-      smashedLoggers.play();
-      randomSquare();
-    } 
-    /*else {
-      score.textContent = result;
-      wrong.classList.add("fadeAway");
-      setTimeout(function() {
-        wrong.classList.remove("fadeAway");
-      }, 500);
-      randomSquare();
-    }*/
-  })
-})
-
-squareYellow.forEach(square => {
-  square.addEventListener('click', () => {
-    if (square.id == hitPosition) {
-      result++;
-      score.textContent = result;
-      smashedLoggers = new playSound("sounds/correct.mp3");
-      smashedLoggers.play();
-      randomSquare();
-    } 
-  })
-})
-
-squareGreen.forEach(square => {
-  square.addEventListener('click', () => {
-    if (square.id == hitPosition) {
-      result++;
-      score.textContent = result;
-      smashedLoggers = new playSound("sounds/correct.mp3");
-      smashedLoggers.play();
-      randomSquare();
-    } 
-  })
-})
-
-squareBlue.forEach(square => {
-  square.addEventListener('click', () => {
-    if (square.id == hitPosition) {
-      result++;
-      score.textContent = result;
-      smashedLoggers = new playSound("sounds/correct.mp3");
-      smashedLoggers.play();
-      randomSquare();
-    } 
-  })
-})
-
 function randomSquare() {
-  // choose random position from 1 - 4
+  // add mole to random position from 1 - 4
   let randomPosition = squares[Math.floor(Math.random() * 4)];
+  randomPosition.classList.add('mole');
   hitPosition = randomPosition.id;
-  wristbandColour = hitPosition;
+  wristbandColour.textContent = hitPosition;
 }
 
-function countDown() {
-  currentTime--;
-  timeLeft.textContent = currentTime;
+randomSquare();
 
-  if (currentTime == 0) {
-    clearInterval(countDownTimerId);
-    clearInterval(timerId);
-    alert('Your score is ' + result);
-  }
-}
+squares.forEach(square => {
+  square.addEventListener('click', () => {
+    if (square.id == hitPosition) {
+      result++;
+      score.textContent = result;
+      hitPosition = null;
+      smashedLoggers = new playSound("sounds/correct.mp3");
+      smashedLoggers.play();
+      randomSquare();
+    }
+  })
+})
 
+/*
 function next() {
   window.location.href = "../transitionPages/antiTrawling.html";
-}
+}*/
