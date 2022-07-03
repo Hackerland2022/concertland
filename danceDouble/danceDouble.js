@@ -26,7 +26,7 @@ var dnHeld;
 
 var playerTurn = 1
 
-var pattern = []
+var movesPattern = []
 
 // player 1
 var player1 = {
@@ -70,6 +70,14 @@ var buttonPressView = {
 var loadingInterval = 0;
 
 var overlayBitmap
+
+var currentMoveIndex = 0;
+
+var winner = 0;
+
+var playerTurnTxt;
+
+var soundInstance;
 
 // ----------------------------------------------
 // CANVAS SETTINGS
@@ -181,6 +189,8 @@ function handleTick(event) {
             addNewButtonPress("left");
 
             lfHeld = false;
+
+            processMove("left");
 		}
 		
 		if (rtHeld) {
@@ -195,6 +205,9 @@ function handleTick(event) {
             addNewButtonPress("right");
 
             rtHeld = false;
+
+            processMove("right");
+
 		} 
 		
 		if (fwdHeld) {
@@ -209,6 +222,8 @@ function handleTick(event) {
             addNewButtonPress("up");
 
             fwdHeld = false;
+
+            processMove("up");
 			
 		}
 
@@ -224,6 +239,9 @@ function handleTick(event) {
             addNewButtonPress("down");
 
 			dnHeld = false;
+
+            processMove("down");
+
 		}
 
 
@@ -237,11 +255,83 @@ function handleTick(event) {
             }
         }
 
+        playerTurnTxt.text = "Player " + playerTurn + "'s Turn";
+
 	}
 
 
-
 	stage.update();
+}
+
+function processMove(move) {
+    if (movesPattern.length < 4) {
+        // record the move
+        movesPattern.push(move);
+
+        if (currentMoveIndex == 3) {
+            currentMoveIndex = 0;
+
+            // swap player turn
+            playerTurn = playerTurn == 1 ? 2 : 1;
+    
+            // add divider
+            let newButtonPress = {}
+            image = preload.getResult("divider");							
+            bitmap = new createjs.Bitmap(image)
+            bitmap.scaleX = buttonPressView.height / canvasHeight
+            bitmap.scaleY =  buttonPressView.width / canvasWidth
+            bitmap.x = canvasWidth - 20
+            bitmap.y = Math.floor(canvasHeight / 2 + 180) 
+            newButtonPress.bitmap = bitmap
+            buttonPressesOnscreen.push(newButtonPress)
+            stage.addChild(newButtonPress.bitmap)
+        } else {
+            currentMoveIndex++;
+            
+        }
+
+    } else if (currentMoveIndex < movesPattern.length) {
+        if (movesPattern[currentMoveIndex] == move) {
+            
+        } else {
+            // game over
+            winner = playerTurn == 1 ? 2 : 1;
+
+            gameover()
+        }
+        currentMoveIndex++;
+
+    } else {
+        // record new move
+        movesPattern.push(move);
+        currentMoveIndex = 0;
+
+        // swap player turn
+        playerTurn = playerTurn == 1 ? 2 : 1;
+
+        // add divider
+        let newButtonPress = {}
+        image = preload.getResult("divider");							
+        bitmap = new createjs.Bitmap(image)
+        bitmap.scaleX = buttonPressView.height / canvasHeight
+        bitmap.scaleY =  buttonPressView.width / canvasWidth
+        bitmap.x = canvasWidth - 20
+        bitmap.y = Math.floor(canvasHeight / 2 + 180) 
+        newButtonPress.bitmap = bitmap
+        buttonPressesOnscreen.push(newButtonPress)
+        stage.addChild(newButtonPress.bitmap)
+
+        // // activate change sound
+        // createjs.Sound.play("beat");
+
+        // // activate cooldown timer
+
+    }
+
+    
+
+
+    console.log(currentMoveIndex, movesPattern)
 }
 
 function addNewButtonPress(button) {
@@ -271,11 +361,19 @@ function resetGameVar() {
     playerTurn = 1;
 
     // reset the pattern
-    pattern = [];
+    movesPattern = [];
+
+    // reset the button presses
+    buttonPressesOnscreen = [];
+
+    // reset current move index
+    currentMoveIndex = 0;
 }
 
 
 function restart() {
+    resetGameVar();
+
     stage.removeAllChildren();
 
     lfHeld = rtHeld = fwdHeld = dnHeld = false;
@@ -349,31 +447,14 @@ function restart() {
     
     // winner text
 
-    // healthField = new createjs.Text("Health:  / 200", "bold 18px Arial", "#15538c");
-	// healthField.textAlign = "right";
-	// healthField.x = canvas.width - 20;
-	// healthField.y = 20;
-	// healthField.maxWidth = 1000;
-
-
-
-    // // button press item test
-
-    // image = preload.getResult("down")							
-	// bitmap = new createjs.Bitmap(image)
-	// bitmap.scaleX = buttonPressView.height / canvasHeight
-	// bitmap.scaleY =  buttonPressView.width / canvasWidth
-	// bitmap.x = Math.floor(canvasWidth / 2 - 50) 
-	// bitmap.y = Math.floor(canvasHeight / 2 + 180) 
-	// // bitmap.regX = bitmap.regY = SQRIMGHEIGHT / 2;
-	// buttonPressView.bitmap = bitmap
-	// stage.addChild(buttonPressView.bitmap)
-
-    // button press item array
-
-
+    playerTurnTxt = new createjs.Text("Player " + playerTurn + "'s Turn", "bold 18px Arial", "#FFFFFF");
+	playerTurnTxt.textAlign = "right";
+	playerTurnTxt.x = canvasWidth / 2 + 80;
+	playerTurnTxt.y = 200;
+	playerTurnTxt.maxWidth = 1000;
 
     stage.addChild(
+        playerTurnTxt, 
         player1Sprite,
         player2Sprite
     );
@@ -393,31 +474,57 @@ function handleKeyDown(e) {
 	if (!e) {
 		var e = window.event;
 	}
-	switch (e.keyCode) {
 
-		case KEYCODE_A:
-		case KEYCODE_LEFT:
-			lfHeld = true;
-			return false;
-		case KEYCODE_D:
-		case KEYCODE_RIGHT:
-			rtHeld = true;
-			return false;
-		case KEYCODE_W:
-		case KEYCODE_UP:
-			fwdHeld = true;
-			return false;
-        case KEYCODE_S:
-        case KEYCODE_DOWN:
-            dnHeld = true;
-            return false;
-                
-		case KEYCODE_ENTER:
-			if (canvas.onclick == handleClick) {
-				handleClick();
-			}
-			return false;
-	}
+    if (gameState == "gamemover") {
+        return
+    }
+
+    if (playerTurn == 1) {
+
+        switch (e.keyCode) {
+
+            case KEYCODE_A:
+                lfHeld = true;
+                return false;
+            case KEYCODE_D:
+                rtHeld = true;
+                return false;
+            case KEYCODE_W:
+                fwdHeld = true;
+                return false;
+            case KEYCODE_S:
+                dnHeld = true;
+                return false;
+                    
+            case KEYCODE_ENTER:
+                if (canvas.onclick == handleClick) {
+                    handleClick();
+                }
+                return false;
+        }
+    } else {
+        switch (e.keyCode) {
+
+            case KEYCODE_LEFT:
+                lfHeld = true;
+                return false;
+            case KEYCODE_RIGHT:
+                rtHeld = true;
+                return false;
+            case KEYCODE_UP:
+                fwdHeld = true;
+                return false;
+            case KEYCODE_DOWN:
+                dnHeld = true;
+                return false;
+                    
+            case KEYCODE_ENTER:
+                if (canvas.onclick == handleClick) {
+                    handleClick();
+                }
+                return false;
+        }
+    }
 }
 
 function handleKeyUp(e) {
@@ -472,6 +579,8 @@ function doneLoading(event) {
 	overlayBitmap.y = (canvasHeight / 2) - (overlayBitmap.getTransformedBounds().height / 2)
 	stage.addChild(overlayBitmap)
 
+	soundInstance = createjs.Sound.play("beat", {loop: -1, volume: 0.5});
+
 	watchRestart();
 }
 
@@ -485,11 +594,37 @@ function watchRestart() {
 }
 
 function handleClick() {
+    
+
 	//prevent extra clicks and hide text
 	canvas.onclick = null;
 
-	// indicate the player is now on screen
-	createjs.Sound.play("battleMusic");
+    soundInstance.play()
 
 	restart();
+}
+
+
+function gameover() {
+
+	stage.removeAllChildren()
+	stage.clear()
+
+    gameState = "gamemover"
+
+    console.log("Gameover")
+
+    endGameTxt = new createjs.Text("Player " + winner + " wins!\n\nClick to replay", "bold 30px Arial", "#FFFFFF");
+	endGameTxt.textAlign = "center";
+	endGameTxt.x = canvasWidth / 2;
+	endGameTxt.y = canvasHeight / 2 - 50;
+	endGameTxt.maxWidth = 1000;
+
+    stage.addChild(
+        endGameTxt
+    );
+
+    soundInstance.stop()
+
+	watchRestart()
 }
