@@ -14,3 +14,5 @@
 
 # Credits
 * stage, crowd from [pixabay](https://www.pixabay.com")
+* Dancing green character from [pngegg](https://www.pngegg.com/en/png-moxks)
+* Dancing blue character from [pngegg](https://www.pngegg.com/en/png-ofmxm)
