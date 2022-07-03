@@ -1,0 +1,197 @@
+body {
+    font-family: "Arial Narrow Bold", sans-serif;
+    background: linear-gradient(#c8dcff, #bdcae6 55%, #519673 65%, #e0e0e0);
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#gameContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../Assets/Images/stage.png");
+    background-size: 80vw 80vh;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+#game {
+    position: absolute;
+    top: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 30vw;
+    display: none;
+    z-index: 20;
+}
+
+#audience {
+    bottom: 0;
+    max-height: 30vh;
+    width: 100vw;
+}
+
+.crowdoutline {
+    bottom: -10vh;
+    height: 50vh;
+    position: absolute;
+    object-fit: contain;
+    width: 100vw;
+    background-image: url("../Assets/Images/crowdoutline.png");
+}
+
+.top {
+    z-index: 4;
+}
+
+.crowd {
+    position: absolute;
+    width: 100vw;
+    height: 40vh;
+    bottom: -10vh;
+    background-image: url("../Assets/Images/crowdoutline.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: -10vw;
+}
+
+#endGame {
+    display: none;
+}
+
+.box {
+    background-color: rgba(0, 0, 0, 0.6);
+    max-width: 60vw;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 2vh 2vw;
+}
+
+#instructionModal {
+    position: absolute;
+    top: 30vh;
+    text-align: center;
+}
+
+#startBtn {
+    width: 10vw;
+    cursor: pointer;
+    border: 2px transparent solid;
+}
+
+#startBtn:hover {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: outline 5s infinite;
+}
+
+@keyframes outline {
+    0% {
+        background-position: 0% 50%;
+        border: 2px white solid;
+        color: black;
+    }
+    50% {
+        background-position: 100% 50%;
+        border: 2px white dotted;
+        color: white;
+    }
+    100% {
+        background-position: 0% 50%;
+        border: 2px white solid;
+        color: black;
+    }
+}
+
+.track-container {
+    height: 100%;
+    border: 2px white solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.track {
+    height: 100%;
+    width: 50%;
+}
+
+.track:not(:last-child) {
+    border-right: 1px solid grey;
+}
+
+.key {
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    text-align: center;
+    font-size: 1.6rem;
+    color: white;
+    width: 50%;
+}
+
+.key--red {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.key--blue {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.key-container {
+    display: flex;
+    justify-content: center;
+}
+
+.note {
+    position: absolute;
+    width: 50%;
+    height: 1.5rem;
+    top: -1.5rem;
+}
+
+@keyframes moveDown {
+    0% {
+        top: -1.5rem;
+    }
+    98% {
+        top: 98%;
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+#stats {
+    border: 2px dotted black;
+    padding: 2vh 2vw;
+    width: 20vw;
+    position: absolute;
+    left: 0;
+    color: black;
+    display: none;
+}
+
+#endGame {
+    z-index: 11;
+    display: none;
+    flex-direction: column;
+}
+
+#endGame button {
+    margin-top: 1vh;
+    cursor: pointer;
+}
