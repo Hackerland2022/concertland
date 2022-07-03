@@ -51,6 +51,16 @@ var stageBg = {
 }
 
 var buttonPressesOnscreen = []
+var buttonDefault = {
+    width: 150,
+    height: 150,
+    bitmap: null,
+    x: 800,
+    y: 0,
+    alpha: 1,
+    visible: true,
+}
+
 var buttonPressView = {
     bitmap: null,
     width: 150,
@@ -59,7 +69,7 @@ var buttonPressView = {
 
 var loadingInterval = 0;
 
-
+var overlayBitmap
 
 // ----------------------------------------------
 // CANVAS SETTINGS
@@ -127,12 +137,18 @@ function init() {
 		{id: "left", src: "Images/left_a_white.png"},
 		{id: "right", src: "Images/right_d_white.png"},
 		{id: "up", src: "Images/up_w_white.png"},
+        
+		{id: "divider", src: "Images/divider.png"},
 
+		{id: "introCard", src: "Images/instructions.png"},
 		
 		{id: "sound1", src: "Sounds/sound1.wav"},
 		{id: "sound2", src: "Sounds/sound2.wav"},
 		{id: "sound3", src: "Sounds/sound3.wav"},
 		{id: "sound4", src: "Sounds/sound4.wav"},
+
+		{id: "beat", src: "Sounds/beat.wav"},
+
 	];
 
 	createjs.Sound.alternateExtensions = ["mp3"];
@@ -154,40 +170,58 @@ function handleTick(event) {
 
 		// STEERING CONTROLS
 		if (lfHeld) {
+            createjs.Sound.play("sound1");
+
             if (playerTurn == 1) {
                 player1Sprite.gotoAndPlay("dance2");
             } else {
                 player2Sprite.gotoAndPlay("dance2");
             }
 
+            addNewButtonPress("left");
+
             lfHeld = false;
 		}
 		
 		if (rtHeld) {
+            createjs.Sound.play("sound4");
+
             if (playerTurn == 1) {
                 player1Sprite.gotoAndPlay("dance3");
             } else {
                 player2Sprite.gotoAndPlay("dance3");
             }
+
+            addNewButtonPress("right");
+
             rtHeld = false;
 		} 
 		
 		if (fwdHeld) {
+            createjs.Sound.play("sound2");
+            
             if (playerTurn == 1) {
                 player1Sprite.gotoAndPlay("dance4");
             } else {
                 player2Sprite.gotoAndPlay("dance4");
             }
+
+            addNewButtonPress("up");
+
             fwdHeld = false;
 			
 		}
 
 		if (dnHeld) {
+            createjs.Sound.play("sound3");
+            
             if (playerTurn == 1) {
                 player1Sprite.gotoAndPlay("dance5");
             } else {
                 player2Sprite.gotoAndPlay("dance5");
             }
+
+            addNewButtonPress("down");
 
 			dnHeld = false;
 		}
@@ -195,12 +229,33 @@ function handleTick(event) {
 
 		// update current button view
 
+        for (let i = 0; i < buttonPressesOnscreen.length; i++) {
+            buttonPressesOnscreen[i].bitmap.x = buttonPressesOnscreen[i].bitmap.x - 5;
+            if (buttonPressesOnscreen[i].bitmap.x < -buttonPressView.width) {
+                stage.removeChild(buttonPressesOnscreen[i].bitmap)
+                buttonPressesOnscreen.splice(i, 1)
+            }
+        }
 
 	}
 
 
 
 	stage.update();
+}
+
+function addNewButtonPress(button) {
+    let newButtonPress = {}
+    image = preload.getResult(button);							
+    bitmap = new createjs.Bitmap(image)
+    bitmap.scaleX = buttonPressView.height / canvasHeight
+    bitmap.scaleY =  buttonPressView.width / canvasWidth
+    bitmap.x = canvasWidth - buttonPressView.width / 2
+    bitmap.y = Math.floor(canvasHeight / 2 + 180) 
+    newButtonPress.bitmap = bitmap
+    buttonPressesOnscreen.push(newButtonPress)
+    stage.addChild(newButtonPress.bitmap)
+
 }
 
 
@@ -302,17 +357,21 @@ function restart() {
 
 
 
-    // button press item
+    // // button press item test
 
-    image = preload.getResult("down")							
-	bitmap = new createjs.Bitmap(image)
-	bitmap.scaleX = buttonPressView.height / canvasHeight
-	bitmap.scaleY =  buttonPressView.width / canvasWidth
-	bitmap.x = Math.floor(canvasWidth / 2 - 50) 
-	bitmap.y = Math.floor(canvasHeight / 2 + 180) 
-	// bitmap.regX = bitmap.regY = SQRIMGHEIGHT / 2;
-	buttonPressView.bitmap = bitmap
-	stage.addChild(buttonPressView.bitmap)
+    // image = preload.getResult("down")							
+	// bitmap = new createjs.Bitmap(image)
+	// bitmap.scaleX = buttonPressView.height / canvasHeight
+	// bitmap.scaleY =  buttonPressView.width / canvasWidth
+	// bitmap.x = Math.floor(canvasWidth / 2 - 50) 
+	// bitmap.y = Math.floor(canvasHeight / 2 + 180) 
+	// // bitmap.regX = bitmap.regY = SQRIMGHEIGHT / 2;
+	// buttonPressView.bitmap = bitmap
+	// stage.addChild(buttonPressView.bitmap)
+
+    // button press item array
+
+
 
     stage.addChild(
         player1Sprite,
@@ -405,17 +464,13 @@ function doneLoading(event) {
 
 	stage.removeChild(messageField);
 
-	// var image = preload.getResult("introCard")
-	// overlayBitmap = new createjs.Bitmap(image);
-	// overlayBitmap.scaleX = 0.5 
-	// overlayBitmap.scaleY = 0.5
-	// overlayBitmap.x = (viewportWidth / 2) - (overlayBitmap.getTransformedBounds().width / 2)
-	// overlayBitmap.y = (viewportHeight / 2) - (overlayBitmap.getTransformedBounds().height / 2)
-	// stage.addChild(overlayBitmap)
-
-	// start the music
-	// soundInstance = createjs.Sound.play("battleMusic", {interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4});
-	// soundInstance.volume = 0.5;
+	var image = preload.getResult("introCard")
+	overlayBitmap = new createjs.Bitmap(image);
+	overlayBitmap.scaleX = 1
+	overlayBitmap.scaleY = 1
+	overlayBitmap.x = (canvasWidth / 2) - (overlayBitmap.getTransformedBounds().width / 2)
+	overlayBitmap.y = (canvasHeight / 2) - (overlayBitmap.getTransformedBounds().height / 2)
+	stage.addChild(overlayBitmap)
 
 	watchRestart();
 }
