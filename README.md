@@ -1,4 +1,9 @@
+
 # concertland
+
+## Games:
+* DanceBox! Players to dance to the correct areas to win points!
+* Cheering - Cheer with the crowd (or it will be awkward)... 
 
 # Audio 
 * many sounds taken from [soundscrate](https://www.soundscrate.com")

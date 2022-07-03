@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dancebox.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <title>DanceBox</title>
+</head>
+
+<body>
+    <div id="rainbow-container1"></div>
+    <div id="game-container">
+        <canvas class="game-canvas" id="main-canvas" width="880" height="560"></canvas>
+        <div class="colorBlock" onmouseover="changeFloorColor()"></div>
+        <img id="girldancer" src="../img/gdance-cropped.gif">
+        <img id="wavedancer" src="../img/wave-unscreen.gif">
+        <img id="boydancer" src="../img/bdance-cropped.gif">
+    </div>
+
+
+
+    <div id="rainbow-container2"></div>
+
+
+
+
+    <div class="play-music">
+        <div id="music-animation" class="music-animation">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+          <span class="bar bar4"></span>
+          <span class="bar bar5"></span>
+        </div>
+        <div class="music-toggle"><a onClick="togglePlay()" id="toggle" data-text-swap="Music on">Music off</a></div>
+      </div>
+      <audio id="music" loop="loop" src="https://web.opendrive.com/api/v1/download/file.json/OV84MDUyNTM1NF9aSXB6Sw?inline=1"></audio>
+      
+
+    <button class="music-button off" id="js-music-button">Press for Music!</button>
+    <button><a href="../html/start_dancebox.html">Go back</a></button>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="../js/dancebox.js"></script>
+<script src="../js/crewdance.js"></script>
+<script src="../js/carltondance.js"></script>
+
+</html>
