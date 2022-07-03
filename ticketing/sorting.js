@@ -78,5 +78,5 @@ squares.forEach(square => {
 })
 
 function next() {
-  window.location.href = "../ticketingInfo/ticketInfo.html";
+  window.location.href = "../danceDouble/danceDouble.html";
 }
