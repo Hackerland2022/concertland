@@ -1,0 +1,59 @@
+html,
+body,
+canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #85105a;
+  padding: 0px;
+}
+
+#danceCanvas {
+  /* border: 1px solid #000000; */
+  background-color: #100b1b;
+
+  margin: 0px;
+  /* width: calc(100vw - ((100vw - 100%)));
+  height: calc(100vh - ((100vw - 100%))); */
+
+  width: 800px;
+  height: 600px;
+}
+
+#canvasSection {
+    margin: 0px;
+
+}
+
+.contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#stats-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    /* background-color: #100b1b; */
+}
+
+#stats-display > p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.5em;
+    color: #ffffff;
+    
+}
