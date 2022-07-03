@@ -598,7 +598,7 @@ function handleClick() {
 
 	//prevent extra clicks and hide text
 	canvas.onclick = null;
-
+    
     soundInstance.play()
 
 	restart();
