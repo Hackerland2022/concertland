@@ -1,5 +1,4 @@
-# concertfestivalthing
-The main repo for now
+# concert land
 
 # Audio 
 * many sounds taken from [soundscrate](https://www.soundscrate.com")
