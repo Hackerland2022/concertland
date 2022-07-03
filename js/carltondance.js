@@ -22,19 +22,19 @@ function togglePlay() {
 };
 music.onplaying = function() {
   isPlaying = true;
-  // document.getElementById("music-animation").classList.add('on')
+  document.getElementById("music-animation").classList.add('on')
 };
 music.onpause = function() {
   isPlaying = false;
-  // document.getElementById("music-animation").classList.remove('on')
+  document.getElementById("music-animation").classList.remove('on')
 };
 
-var button = document.getElementById("toggle");
-button.addEventListener('click', function() {
-  if (button.getAttribute("data-text-swap") == button.innerHTML) {
-    button.innerHTML = button.getAttribute("data-text-original");
+var toogle_btn = document.getElementById("toggle");
+toogle_btn.addEventListener('click', function() {
+  if (toogle_btn.getAttribute("data-text-swap") == toogle_btn.innerHTML) {
+    toogle_btn.innerHTML = toogle_btn.getAttribute("data-text-original");
   } else {
-    button.setAttribute("data-text-original", button.innerHTML);
-    button.innerHTML = button.getAttribute("data-text-swap");
+    toogle_btn.setAttribute("data-text-original", toogle_btn.innerHTML);
+    toogle_btn.innerHTML = toogle_btn.getAttribute("data-text-swap");
   }
 }, false);

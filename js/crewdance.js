@@ -255,32 +255,32 @@ const initialState = {
         "p1": {
             ...personSchema,
             x:2,
-            y:6,
+            y:5,
             assetId: "constructionA", behavior: { queue: staticDancerOnLeft }
         },
         "p2": {
             ...personSchema,
             x:2,
-            y:5,
+            y:4,
             assetId: "drew", behavior: { queue: staticDancerOnLeft }
         },
         "p3": {
             ...personSchema,
             x:3,
-            y:4,
+            y:3,
             assetId: "leslie", behavior: { queue: staticDancerOnLeft }
         },
         "p4": {
             ...personSchema,
             x:4,
-            y:3,
+            y:2,
             assetId: "jacob", behavior: { queue: jacobBehavior }
         },
 
         "p5": {
             ...personSchema,
             x:5,
-            y:2,
+            y:1,
             assetId: "male-hank", behavior: { queue: hankBehavior }
         },
 
@@ -288,41 +288,55 @@ const initialState = {
         "p6": {
             ...personSchema,
             x:6,
-            y:3,
+            y:2,
             assetId: "female-hank", behavior: { queue: zaniBehavior }
         },
         "p7": {
             ...personSchema,
             x:7,
-            y:4,
+            y:3,
             assetId: "mark", behavior: { queue: staticDancerOnRight }
         },
         "p8": {
             ...personSchema,
             x:8,
-            y:5,
+            y:4,
             assetId: "danny", behavior: { queue: staticDancerOnRight }
         },
         "p9": {
             ...personSchema,
             x:8,
-            y:6,
+            y:5,
             assetId: "jessie", behavior: { queue: staticDancerOnRight }
         },
 
         "suit": {
             ...personSchema,
-            x:1,
+            x:0,
             y:3,
             assetId: "suit",
             direction: "right",
         },
         "berg": {
             ...personSchema,
-            x:2,
+            x:1,
             y:3,
             assetId: "berg",
             direction: "left",
+        },
+        "m1": {
+            ...personSchema,
+            x:10,
+            y:2,
+            assetId: "suit",
+            direction: "left",behavior: { queue: staticDancerOnLeft }
+        },
+        "m2": {
+            ...personSchema,
+            x:0,
+            y:1,
+            assetId: "danny",
+            direction: "left",behavior: { queue: staticDancerOnRight }
         },
         // "test": {
         //     ...personSchema,
