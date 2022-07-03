@@ -2,6 +2,7 @@
 # concertland
 
 ## Games:
+* Ticketing - Choose the colour corresponding to the ticket category
 * DanceBox! Players to dance to the correct areas to win points!
 * Cheering - Cheer with the crowd (or it will be awkward)... 
 
