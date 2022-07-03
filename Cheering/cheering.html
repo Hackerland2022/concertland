@@ -10,27 +10,52 @@
 <body>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="./cheering.js"></script>
-    <audio id="idolSinging" src="" autoplay="false" preload="auto"></audio>
-    <audio id="scream" src="../Assets/Sounds/womanscream.mp3" autoplay="false" preload="auto"></audio>
-    <audio id="audienceCheer" src="../Assets/Sounds/audienceapplause.mp3" autoplay="false" preload="auto"></audio>
+    <audio id="song" src="../Assets/Sounds/rock-performance.mp3" preload="auto"></audio>
+    <audio id="scream" src="../Assets/Sounds/womanscream.mp3" preload="auto"></audio>
+    <audio id="audienceCheer" src="../Assets/Sounds/audienceapplause.mp3" preload="auto"></audio>
     <div class="box top" id="instructionModal">
         <p>Hit the falling notes! Press the "A" and "D" keys to cheer with the crowd.</p>
         <button class="box" id="startBtn">Start</button>
     </div>
+
     <div id="gameContainer">
+        <div id="stats">
+            <div class="hit">
+                <div class="hit__combo">Combo: </div>
+                <div class="hit__accuracy"></div>
+            </div>
+            <br/>
+            <div class="result__accuracy score">
+                <p class="accuracy__heading">Score: </p>
+                <p id="score_count"></p>
+            </div>
+            <br/>
+            <div class="summary__timer"></div>
+        </div> 
+
         <div id="game">
+
             <!--<div id="stage">
                 <img id="idolImage" src="" alt="idol">
             </div> -->
-            <div id="audience">
-                <div class="crowdoutline top"></div>
-                <div class="crowd"></div>
-                <div class="crowd" style="margin-left: 20vw;"></div>
-            </div>        
-            <div id="endGame">
-
+            <div class="track-container"></div>
+            <div class="key-container">
+                <div class="key key--blue">
+                  <div class="keypress keypress--blue"></div>
+                  <span>A</span>
+                </div>
+                <div class="key key--red">
+                  <div class="keypress keypress--red"></div>
+                  <span>D</span>
+                </div>
             </div>
-        </div>
+            <div id="endGame"></div>
+        </d iv>
     </div>
+    <div id="audience">
+        <div class="crowdoutline top"></div>
+        <div class="crowd"></div>
+        <div class="crowd" style="margin-left: 20vw;"></div>
+    </div>   
 </body>
 </html>
